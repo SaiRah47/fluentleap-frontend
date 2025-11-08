@@ -1,8 +1,12 @@
 import axios from 'axios';
 import { useCallback } from 'react';
 
-// Your backend API is running at http://localhost:8000
-export const API_BASE_URL = 'http://localhost:8000'; // <-- EXPORT THIS
+// --- THIS IS THE FIX ---
+// We read the API URL from the environment variables.
+// This allows us to use a different URL for local testing vs. production.
+export const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+// --- END OF FIX ---
+
 
 /**
  * This hook provides functions to interact with the REAL backend API.

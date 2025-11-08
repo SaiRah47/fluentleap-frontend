@@ -4,14 +4,14 @@ const HistoryItem = ({ entry, index, onOpenModal, onWordClick, apiBaseUrl }) => 
     const itemClass = index % 2 === 0 ? 'even' : 'odd';
 
     // --- THIS IS THE FIX ---
-    // We create a style object.
+    // The image URL from Firebase is now a complete, absolute URL.
+    // We NO LONGER need to add `apiBaseUrl` to it.
+
     const polaroidStyle = {};
     if (entry.story_image_url) {
-        // If the URL exists, we set the CSS variable.
-        polaroidStyle['--image-url'] = `url(${apiBaseUrl}${entry.story_image_url})`;
+        // We now use the URL directly from the entry
+        polaroidStyle['--image-url'] = `url(${entry.story_image_url})`;
     }
-    // If the URL *doesn't* exist, we add nothing to the style object.
-    // The CSS will automatically use its fallback gradient.
     // --- END OF FIX ---
 
     return (
