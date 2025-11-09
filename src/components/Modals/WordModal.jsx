@@ -37,6 +37,14 @@ const WordModal = ({ wordData, onClose, playAudio }) => {
                         {wordData.antonyms.split(',').map(a => a.trim() ? <span key={a.trim()} className="tag">{a.trim()}</span> : null)}
                     </div>
                 </div>
+                {wordData.collocations && (
+                    <div className="modal-info-section">
+                        <h4>Common Collocations</h4>
+                        <div className="tags">
+                            {wordData.collocations.split(',').map(c => c.trim() ? <span key={c.trim()} className="tag">{c.trim()}</span> : null)}
+                        </div>
+                    </div>
+                )}
                 {sentences.length > 0 && (
                     <div className="modal-info-section example">
                         <h4>Examples</h4>

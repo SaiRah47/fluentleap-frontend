@@ -5,8 +5,10 @@ const StoryEditor = ({
     story,
     onStoryChange,
     onSubmit,
-    words,
+    wordData,
+    dailyIdioms,
     usedWords,
+    storyText,
     isSubmitting,
     isUnlocked,
     feedback, // <-- New prop
@@ -17,8 +19,10 @@ const StoryEditor = ({
         <div className={`notebook-section ${!isUnlocked ? 'is-disabled' : ''}`}>
             <h3>✍️ Your Story Journal</h3>
             <UsageTracker
-                words={words}
-                usedWords={usedWords}
+                wordData={wordData}
+                dailyIdioms={dailyIdioms}
+                usedWords={usedWords} // You can remove this if UsageTracker calculates its own
+                storyText={storyText} // Pass this down
             />
             <div className="notebook-lines">
                 <textarea
